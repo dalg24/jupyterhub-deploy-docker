@@ -81,3 +81,5 @@ with open(os.path.join(pwd, 'userlist')) as f:
         whitelist.add(name)
         if len(parts) > 1 and parts[1] == 'admin':
             admin.add(name)
+
+c.JupyterHub.base_url = '/jupyter/'
