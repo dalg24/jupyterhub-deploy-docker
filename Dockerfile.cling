@@ -10,4 +10,9 @@ RUN apt-get update && \
 RUN conda install --quiet --yes cling && \
     conda clean -tipsy
 
+COPY extend_jupyter_notebook_config.py $HOME/
+
+RUN cat $HOME/extend_jupyter_notebook_config.py >> /etc/jupyter/jupyter_notebook_config.py && \
+    rm $HOME/extend_jupyter_notebook_config.py && cat /etc/jupyter/jupyter_notebook_config.py
+
 USER $NB_USER
