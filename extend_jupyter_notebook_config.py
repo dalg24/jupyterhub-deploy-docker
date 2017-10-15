@@ -8,3 +8,9 @@ if os.path.isfile(user_config_file):
       if ld_library_path:
           os.environ['LD_LIBRARY_PATH'] = ld_library_path
           c.Spawner.env_keep.append('LD_LIBRARY_PATH')
+      pythonpath = user_config.get('PYTHONPATH')
+      if pythonpath:
+          if 'PYTHONPATH' in os.environ:
+              os.environ['PYTHONPATH'] += ':' + pythonpath
+          else:
+              os.environ['PYTHONPATH'] = pythonpath
