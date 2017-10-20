@@ -15,4 +15,6 @@ COPY extend_jupyter_notebook_config.py $HOME/
 RUN cat $HOME/extend_jupyter_notebook_config.py >> /etc/jupyter/jupyter_notebook_config.py && \
     rm $HOME/extend_jupyter_notebook_config.py && cat /etc/jupyter/jupyter_notebook_config.py
 
+RUN echo "if [ -f /home/jovyan/work/.bashrc ]; then . /home/jovyan/work/.bashrc; fi" >> /home/jovyan/.bashrc
+
 USER $NB_USER
